@@ -23,44 +23,44 @@ SELECT * FROM observations;
 
 -- MISSION 1
 -- Your query here;
- 1
+ --1
 SELECT * FROM observations
 LIMIT 10;
 
- 2
+ --2
 SELECT DISTINCT region_id FROM observations;
 
- 3
+ --3
 SELECT COUNT(DISTINCT species_id) FROM observations;
 
- 4
+ --4
 SELECT COUNT(*) FROM observations WHERE region_id = 2;
 
- 5
+ --5
 SELECT COUNT(*) FROM observations WHERE observation_date = '1998-08-08';
 
 -- MISSION 2
 -- Your query here;
- 6
+ --6
 SELECT region_id, COUNT(*) AS total
 FROM observations
 GROUP BY region_id
 ORDER BY total DESC
 LIMIT 1;
- 7
+ --7
 SELECT species_id, COUNT(*) AS total
 FROM observations
 GROUP BY species_id
 ORDER BY total DESC
 LIMIT 5;
 
- 8
+ --8
 SELECT species_id, COUNT(*) AS total
 FROM observations
 GROUP BY species_id
 HAVING COUNT(*) < 5;
 
- 9
+-- 9
 SELECT observer, COUNT(*) AS total
 FROM observations
 GROUP BY observer
@@ -68,21 +68,23 @@ ORDER BY total DESC;
 
 -- MISSION 3
 -- Your query here;
-10
+--10
 SELECT observations.*, regions.name
 FROM observations
 JOIN regions ON observations.region_id = regions.id;
 
-11
-SELECT observations.*, species.scientific_name
+--11
+SELECT observations.id, species.scientific_name
 FROM observations
 JOIN species ON observations.species_id = species.id;
 
-12
-SELECT observations.region_id, observations.species_id, COUNT(*) AS total
+--12
+SELECT regions.name AS region, species.scientific_name, COUNT(*) AS total
 FROM observations
-GROUP BY observations.region_id, observations.species_id
-ORDER BY total DESC;
+JOIN species ON observations.species_id = species.id
+JOIN regions ON observations.region_id = regions.id
+GROUP BY region, species.scientific_name
+ORDER BY region, total DESC;
 
 
 -- MISSION 4
