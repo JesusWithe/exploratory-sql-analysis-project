@@ -68,6 +68,21 @@ ORDER BY total DESC;
 
 -- MISSION 3
 -- Your query here;
+10
+SELECT observations.*, regions.name
+FROM observations
+JOIN regions ON observations.region_id = regions.id;
+
+11
+SELECT observations.*, species.scientific_name
+FROM observations
+JOIN species ON observations.species_id = species.id;
+
+12
+SELECT observations.region_id, observations.species_id, COUNT(*) AS total
+FROM observations
+GROUP BY observations.region_id, observations.species_id
+ORDER BY total DESC;
 
 
 -- MISSION 4
