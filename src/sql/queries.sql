@@ -90,18 +90,18 @@ ORDER BY region, total DESC;
 -- MISSION 4
 -- Your query here;
 
+--  13
+INSERT INTO observations (id, species_id, region_id, observation_date, observer)
+VALUES (9999, 1, 2, '2024-01-01', 'Test User');
 
--- MISSION 5
--- Your query here;
+--  14
+UPDATE species
+SET scientific_name = 'Nombre Correcto'
+WHERE scientific_name = 'Nombre Incorrecto';
 
+--  15
+DELETE FROM observations
+WHERE id = 9999;
 
--- MISSION 6
--- Your query here;
+--Uso INSERT para añadir datos, UPDATE para modificar información existente y DELETE para eliminar registros de prueba en la base de datos.
 
-
--- MISSION 7
--- Your query here;
-
-
--- MISSION 8
--- Your query here;
